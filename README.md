@@ -24,7 +24,7 @@
     
 ## API Endpoints
 
-- `GET /api/fraud-check/:user_id/`: Check information about fraud prevention.
+- `GET /api/fraud-check/<user_id>/`: Check information about fraud prevention.
 
 ## Tests
 

@@ -32,6 +32,15 @@ There are test for models, serializers and views. To run the test use the comman
 
     python manage.py test
 
+## Steps to run code
+
+1. First, you need to access the admin panel through http://127.0.0.1:8000/admin/ or the corresponding associated IP, and log in using the superuser created earlier.
+
+2. Then, create at least one user and the necessary payments as needed.
+
+3. Finally, through any means to make API calls, use the URL http://127.0.0.1:8000/api/fraud-check/:user_id/ or the corresponding associated IP along with the ID of the created user to obtain the response from the call.
+
+
 ## Comments
 
 You can see more comments about this proyect in [Comments](Comments.md) or directly in the file.

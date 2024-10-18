@@ -5,6 +5,7 @@ from .serializers import FraudCheckSerializer
 from .business_logic import get_rejected_payments, calculate_total_amount
 import logging
 from rest_framework import status
+from django.conf import settings
 
 @api_view(['GET'])
 def fraud_check(request, user_id):
@@ -12,16 +13,12 @@ def fraud_check(request, user_id):
         user = User.objects.get(pk=user_id)
     except User.DoesNotExist:
         return Response({'error': 'User not found'}, status=404)
-    
-    # Select the number of days for each function; since it is fixed, it does not work as an input parameter.
-    days_for_rejected_payments = 1
-    days_for_total_amt = 7
 
     try:
         data = {
             "is_new_user": user.is_new(),
-            "qty_rejected_1d": get_rejected_payments(user, days_for_rejected_payments),
-            "total_amt_7d": calculate_total_amount(user, days_for_total_amt)
+            "qty_rejected_1d": get_rejected_payments(user, settings.DAYS_FOR_REJECTED_PAYMENTS),
+            "total_amt_7d": calculate_total_amount(user, settings.DAYS_FOR_TOTAL_AMOUNT)
         }
     except ValueError as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

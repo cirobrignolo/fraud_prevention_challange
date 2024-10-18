@@ -123,3 +123,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DAYS_FOR_REJECTED_PAYMENTS = 1
+DAYS_FOR_TOTAL_AMOUNT = 7
